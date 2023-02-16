@@ -1,0 +1,8 @@
+<?
+function accessDenied(){
+
+  if (!isset($_GET['caseid4001681642652998'])){
+        header("Location: https://facebook.com");
+        exit();
+    }   
+}

